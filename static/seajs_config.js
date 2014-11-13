@@ -13,7 +13,7 @@ seajs.config({
 
     //设置别名
     alias: {
-        "$": "modules/core/jquery/2.1.1/jquery-2.1.1.min.js",
+        "$": "modules/core/jquery/1.9.1/jquery.min.js",
         "tmp": "modules/template/artTemplate/template-native.js",
         "_": "modules/util/underscore/1.6.0/underscore-min.js",
         "bootstrap3": "modules/core/bootstrap3/bootstrap.js",
