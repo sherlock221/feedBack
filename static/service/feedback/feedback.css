@@ -1,0 +1,73 @@
+/** 修改模块的间距 **/
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.feedback{
+    background: #f7f6f3;
+}
+
+.ib {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.fb-btn {
+    color: #ffffff;
+    font-size: 12px;
+    border-radius: 4px;
+    text-align: center;
+    padding: 2px 5px;
+    line-height: 12px;
+}
+
+.fb-btn:hover {
+    color: #ffffff;
+}
+
+.fb-btn.little-large {
+    padding: 4px 6px;
+}
+
+.fb-btn.light {
+    background: #fcc53b;
+}
+
+.fb-btn.dark {
+    background: #00a8b2;
+}
+
+.fb-text-noraml {
+    font-size: 14px;
+    color: #828282;
+}
+
+.fb-util {
+    padding-top: 20px;
+    border-bottom: 1px solid #e8e6e3;
+    padding-bottom: 8px;
+    height: 50px;
+}
+
+.fb-header {
+    border-bottom: 1px solid #e8e6e3;
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+.fb-default {
+    padding: 3px 14px;
+}
+
+.fb-list-btns {
+    position: relative;
+    top: -7px;
+}
