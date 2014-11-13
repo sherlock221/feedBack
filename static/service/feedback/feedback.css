@@ -3,6 +3,12 @@
     padding-left: 5px;
     padding-right: 5px;
 }
+.row-fb{
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+
 
 .feedback{
     background: #f7f6f3;
@@ -15,6 +21,9 @@
     vertical-align: middle;
 }
 
+.mr5{
+    margin-right: 5px;
+}
 a:hover {
     text-decoration: none;
     color: inherit;
@@ -71,3 +80,5 @@ a:hover {
     position: relative;
     top: -7px;
 }
+
+

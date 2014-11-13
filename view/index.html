@@ -4,22 +4,22 @@
 
     <!-- 基本配置信息 -->
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta http-equiv="Pragma" content="no-cache"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
 
     <!-- seo 优化部分 -->
-    <meta name="title" content="知了web·知了web" />
-    <meta name="keywords" content="知了web 知了web 知了web 知了web 知了web 知了web 知了web" />
-    <meta name="author" content="sherlock" />
+    <meta name="title" content="知了web·知了web"/>
+    <meta name="keywords" content="知了web 知了web 知了web 知了web 知了web 知了web 知了web"/>
+    <meta name="author" content="sherlock"/>
     <meta name="Description" content="知了web服务平台"/>
 
 
-
     <!-- bootstrap css -->
-    <link href="../static/other/bootstrap/bootstrap.min.css"  rel="stylesheet" />
+    <link href="../static/other/bootstrap/bootstrap.min.css" rel="stylesheet"/>
 
 
     <!-- 小于ie9 的文件 -->
@@ -29,71 +29,132 @@
     <![endif]-->
 
 
-
     <!-- seajs -->
-    <script type="text/javascript" src="../static/other/sea/2.3.0/dist/sea-debug.js" ></script>
+    <script type="text/javascript" src="../static/other/sea/2.3.0/dist/sea-debug.js"></script>
     <script type="text/javascript" src="../static/seajs_config.js"></script>
 
 
-
     <!-- feedback css -->
-    <link href="../static/service/feedback/feedback.css"  rel="stylesheet" />
+    <link href="../static/service/feedback/feedback.css" rel="stylesheet"/>
+    <link href="../static/service/feedback/component.css" rel="stylesheet"/>
 
     <title>知了聆听你的声音·知了</title>
 </head>
 <body class="feedback">
 
 
-        <header class="fb-header">
-            <h4 class="text-center">知了，理解源自沟通</h4>
-        </header>
+<header class="fb-header">
+    <h4 class="text-center">知了，理解源自沟通</h4>
+</header>
 
-        <div class="container-fluid " >
-            <div class="row">
+<div class="container-fluid ">
+    <div class="row">
 
-                <!-- 工具条 -->
-                <section class="col-md-12 fb-util">
-                    <div class="col-sm-2  col-xs-3 text-left">
-                        <span class="ib fb-text-noraml">今日</span>
-                        <a href="javascript:void(0);" class="ib fb-btn dark">380</a>
-                    </div>
-                    <div class="col-sm-6 col-xs-5 text-right">
-                        <a href="javascript:void(0);" class="ib fb-btn little-large light">老师反馈</a>
-                        <a href="javascript:void(0);" class="ib fb-btn little-large dark">家长反馈</a>
-                    </div>
-                    <div class="col-sm-4 col-xs-4 text-right">
-                        <section class="fb-list-btns hidden-xs">
-                            <button class="btn btn-default  ib fb-default">本月(20)</button>
-                            <button class="btn btn-default  ib fb-default">累计(300)</button>
-                        </section>
-                        <section class="visible-xs-block">
-                            <a href="javascript:void(0);" class="ib">累计(3000)</a>
-                        </section>
-                    </div>
-                </section>
-
-                <!--反馈时间轴-->
-                <section class="col-md-12">
-
-
-
-
-                </section>
-
+        <!-- 工具条 -->
+        <section class="col-md-12 fb-util">
+            <div class="col-sm-2  col-xs-3 text-left">
+                <div class="row-fb row">
+                    <span class="ib fb-text-noraml">今日</span>
+                    <a href="javascript:void(0);" class="ib fb-btn dark">380</a>
+                </div>
             </div>
-        </div>
+            <div class="col-sm-6 col-xs-5 text-right">
+                <div class="row-fb row">
+                    <a href="javascript:void(0);" class="ib fb-btn little-large light">老师反馈</a>
+                    <a href="javascript:void(0);" class="ib fb-btn little-large dark">家长反馈</a>
+                </div>
+            </div>
+            <div class="col-sm-4 col-xs-4 text-right">
+                <section class="fb-list-btns hidden-xs">
+                    <button class="btn btn-default  ib fb-default">本月(20)</button>
+                    <button class="btn btn-default  ib fb-default">累计(300)</button>
+                </section>
+                <section class="visible-xs-block">
+                    <a href="javascript:void(0);" class="ib">累计(3000)</a>
+                </section>
+            </div>
+        </section>
+
+        <!--反馈时间轴-->
+        <section class="col-md-12 ">
+
+            <div class="timeline">
+                <ul class="cbp_tmtimeline">
+                <li>
+                    <time class="cbp_tmtime" datetime="2013-04-10 18:30">
+                        <span>4/10/13</span> <span>18:30</span>
+
+                    </time>
+                    <div class="cbp_tmicon ib light">
+                        <img src="../static/img/head.png">
+                    </div>
+
+                    <div class="cbp_tmlabel  light">
+                        <section class="cbp_tmlabel_head light clearfix">
+                            <div class="pull-left">
+                                <i class="ib cbp_user_img mr5"></i>
+                                <span class="ib mr5">李美丽老师</span>
+                                <span class="ib">语文</span>
+                            </div>
+                            <div class="pull-right">
+                                <i class="ib cbp_location_img mr5"></i>
+                                <span class="ib">初三二班</span>
+                                <span class="ib">远东二中</span>
+                                <span class="ib">西安</span>
+                                <span class="ib">陕西</span>
+                            </div>
+                        </section>
+                        <p>昨天发的两个作业通知</p>
+                    </div>
+                </li>
+
+                <li>
+                    <time class="cbp_tmtime" datetime="2013-04-11T12:04"><span>4/11/13</span> <span>12:04</span>
+
+                    </time>
+
+                    <div class="cbp_tmicon ib dark">
+                        <img src="../static/img/head.png">
+                    </div>
+                    <div class="cbp_tmlabel  dark ">
+                        <section class="cbp_tmlabel_head dark clearfix">
+                            <div class="pull-left">
+                                <i class="ib cbp_user_img mr5"></i>
+                                <span class="ib mr5">李美丽老师</span>
+                                <span class="ib">语文</span>
+                            </div>
+                            <div class="pull-right">
+                                <i class="ib cbp_location_img mr5"></i>
+                                <span class="ib">初三二班</span>
+                                <span class="ib">远东二中</span>
+                                <span class="ib">西安</span>
+                                <span class="ib">陕西</span>
+                            </div>
+                        </section>
+                        <p>昨天发的两个作业通知昨天发的两个作业通知.昨天发的两个作业通知昨天发的两个作业通知昨天发的两个作业通知昨天发的两个作业通知</p>
+                    </div>
+                </li>
+
+            </ul>
+            </div>
 
 
-        <footer>
+        </section>
+
+    </div>
+</div>
 
 
-        </footer>
+<footer>
+
+
+</footer>
 
 
 </body>
 
 
 <script type="text/javascript">
-    seajs.use(["service/template/template","service/feedback/feedback"]);
+    seajs.use(["service/template/template", "service/feedback/feedback"]);
 </script>
 </html>
