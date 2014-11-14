@@ -26,7 +26,9 @@ seajs.config({
         "lottery": "modules/ui/lottery/lottery.js",
         "anFrame": "modules/util/aniamtionFrame/requestAnimationFrame.js",
         "textani": "modules/ui/text/jquery.textillate.js",
-        "infline" : "modules/scroll/load/jquery.infinitescroll.js"
+        "infline" : "modules/scroll/load/jquery.infinitescroll.js",
+        "scrollup" : "modules/util/top/jquery.scrollUp.js",
+        "headroom" : "modules/util/top/headroom.js"
 
     },
 
