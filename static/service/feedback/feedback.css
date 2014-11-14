@@ -81,4 +81,11 @@ a:hover {
     top: -7px;
 }
 
+.loading{
+    text-align: center;
+    margin-bottom: 20px;
+    height: 20px;
+    color: #828282;
+}
+
 

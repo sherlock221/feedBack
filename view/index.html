@@ -22,8 +22,8 @@
 
     <!-- 小于ie9 的文件 -->
     <!--[if lt IE 9]>
-    <script src="../static/othes/ie9/html5shiv.min.js"></script>
-    <script src="./static/other/ie9/respond.min.js"></script>
+    <script src="../static/other/ie9/html5shiv.min.js"></script>
+    <script src="../static/other/ie9/respond.min.js"></script>
     <![endif]-->
 
     <!-- seajs -->
@@ -75,7 +75,7 @@
         <!--反馈时间轴-->
         <section class="col-md-12 ">
 
-            <div class="timeline">
+            <div class="timeline" id="infline_scroll">
                 <ul class="cbp_tmtimeline">
                 <li>
                     <time class="cbp_tmtime" datetime="2013-04-10 18:30">
@@ -133,8 +133,13 @@
                 </li>
 
                 </ul>
-            </div>
 
+                <div class="navigation" id="navigation">
+                    <a href="/feedBack/data/getList.json?page=1"></a>
+                </div>
+
+                <div class="loading"></div>
+            </div>
 
         </section>
 
@@ -147,6 +152,37 @@
 
 </footer>
 
+
+<script type="text/html" id="listTempalte">
+    <li>
+        <time class="cbp_tmtime" datetime="2013-04-10 18:30">
+            <span>4/10/13</span> <span>18:30</span>
+
+        </time>
+        <div class="cbp_tmicon ib light">
+            <img src="../static/img/head.png">
+        </div>
+
+        <div class="cbp_tmlabel  light">
+            <div class="cbp_tmlabel_head light clearfix">
+                <div class="pull-left">
+                    <i class="ib cbp_user_img mr5"></i>
+                    <span class="ib mr5">李美丽老师</span>
+                    <span class="ib">语文</span>
+                </div>
+                <div class="pull-right">
+                    <i class="ib cbp_location_img mr5"></i>
+                    <span class="ib">初三二班</span>
+                    <span class="ib">远东二中</span>
+                    <span class="ib">西安</span>
+                    <span class="ib">陕西</span>
+                </div>
+            </div>
+            <p>昨天发的两个作业通知</p>
+        </div>
+    </li>
+
+</script>
 
 </body>
 

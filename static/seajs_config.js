@@ -25,7 +25,8 @@ seajs.config({
         "down-anything": "modules/ui/down-anything/down-anything.js",
         "lottery": "modules/ui/lottery/lottery.js",
         "anFrame": "modules/util/aniamtionFrame/requestAnimationFrame.js",
-        "textani": "modules/ui/text/jquery.textillate.js"
+        "textani": "modules/ui/text/jquery.textillate.js",
+        "infline" : "modules/scroll/load/jquery.infinitescroll.js"
 
     },
 
