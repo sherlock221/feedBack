@@ -8,6 +8,7 @@ define(function (require, exports, module) {
     require("tmp");
     //返回顶部
     require("scrollup");
+
     //header操作
     require("headroom");
 
@@ -16,24 +17,63 @@ define(function (require, exports, module) {
 
     var UI = {
         inflineScroll: $(".timeline"),
-        listTemplate: $("#listTempalte")
+        listTemplate: $("#listTempalte"),
+        totalCount   : $(".totalCount")
     }
+
+
+    //分页
+    var  pageIndex = 1;
+    //每页显示数量
+    var  pageSize = 1;
+
+
+    var  isFirst = true;
 
     var Event = {
 
+
         init: function () {
 
-            var header = new Headroom(document.querySelector("header"), {
-                tolerance: 5,
-                offset : 205,
-                classes: {
-                    initial: "animated",
-                    pinned: "slideDown",
-                    unpinned: "slideUp"
-                }
+            var  pcWidth = $(document).width();
+            console.log(pcWidth);
+            if(pcWidth <=1024){
+                var header = new Headroom(document.querySelector("header"), {
+                    tolerance: 5,
+                    offset : 205,
+                    classes: {
+                        initial: "animated",
+                        pinned: "slideDown",
+                        unpinned: "slideUp"
+                    }
+                });
+                header.init();
+            }
+
+
+
+            tp.helper('$ctDate', function (time) {
+
+
+
+
+                var date  =  new Date(time);
+                var year=date.getFullYear();
+                var month=date.getMonth()+1;
+                var day=date.getDate();
+                var hours=date.getHours();
+                var minutes=date.getMinutes();
+
+                return year+"/"+month+"/"+day;
             });
 
-            header.init();
+            tp.helper('$cttime', function (time) {
+
+                var date  =  new Date(time);
+                var hours=date.getHours();
+                var minutes=date.getMinutes();
+                return hours+":"+minutes;
+            });
 
 
             var refreshList = function (data, append) {
@@ -47,62 +87,115 @@ define(function (require, exports, module) {
             }
 
 
-            //无限滚动加载
-            $(".cbp_tmtimeline").infinitescroll({
-                //导航的选择器 成功后自动隐藏
-                navSelector: "#navigation",
-                //包含下一页链接选择器
-                nextSelector: "#navigation a",
-                //内容块
-                itemSelector: ".cbp_tmtimeline",
-                animate: true,
-                //最大页数
-                maxPage: 3,
-                debug: false,
-                extraScrollPx: 50,
-                localMode: true, //是否允许载入具有相同函数的页面，默认为false
-                dataType: "json",
-                template: function (data) {
-                    //data表示服务端返回的json格式数据，这里需要把data转换成瀑布流块的html格式，然后返回给回到函数
-                    var tmp = refreshList(data);
-                    return tmp;
-                },
 
-                loading: {
-                    msgText: "加载中...",
-                    finishedMsg: '',
-                    img: "../static/img/loading.gif",
-                    selector: '.loading' // 显示loading信息的div
-                },
-                errorCallback: function (error) {
-                    if (error == "done") {
-                        $(".loading").append("数据加载完成!");
+            var   infinitescroll = function(totalPage){
+                //无限滚动加载
+                $(".cbp_tmtimeline").infinitescroll({
+                    //导航的选择器 成功后自动隐藏
+                    navSelector: "#navigation",
+                    //包含下一页链接选择器
+                    nextSelector: "#navigation a",
+                    //内容块
+                    itemSelector: ".cbp_tmtimeline",
+                    animate: true,
+                    //最大页数
+                    maxPage: totalPage,
+                    debug: false,
+                    extraScrollPx: 50,
+                    localMode: true, //是否允许载入具有相同函数的页面，默认为false
+                    dataType: "json",
+                    template: function (result) {
+
+                        var data  = result.bizData;
+                        //data表示服务端返回的json格式数据，这里需要把data转换成瀑布流块的html格式，然后返回给回到函数
+                        var tmp = refreshList(data);
+                        pageIndex++;
+                        return tmp;
+                    },
+
+                    loading: {
+                        msgText: "加载中...",
+                        finishedMsg: '',
+                        img: "../static/img/loading.gif",
+                        selector: '.loading' // 显示loading信息的div
+                    },
+                    errorCallback: function (error) {
+                        if (error == "done") {
+                            $(".loading").append("数据加载完成!");
+                        }
+                    },
+                    error: function (error) {
+                        $(".loading").html(error);
                     }
-                },
-                error: function (error) {
-                    $(".loading").html(error);
-                }
 
-            }, function (result) {
-                //程序执行完的回调函数
-                console.log("完成！");
-            });
+                }, function (result) {
+                    //程序执行完的回调函数
+                    console.log("完成！");
+                });
+
+
+            }
+
 
 
             var firstList = function () {
                 var url = $("#navigation a").attr("href");
-                $.get(url, {}, function (result) {
-                    var html = refreshList(result);
+
+                 var  param = calcParam();
+
+                $.get(url, param, function (result) {
+                    var data  = result.bizData;
+
+                    if(isFirst == true){
+                        console.log("第一次");
+                        //计算分页
+                        var ct = data.count;
+                        var totalPage = calcCount(ct);
+                        infinitescroll(totalPage);
+                        UI.totalCount.html('累计('+ct+')');
+
+                        isFirst = false;
+                    }
+
+
+                    var html = refreshList(data);
                     UI.inflineScroll.find(".cbp_tmtimeline").html(html);
+//                    pageIndex++;
                 });
             }
 
 
-            firstList();
+            //计算分页
+            var  calcCount = function(total){
+                var totalPage = 0;
+                if(total % pageSize == 0)
+                    totalPage = total/pageSize;
+                else
+                    totalPage = parseInt(total/pageSize) +1;
 
+                return totalPage;
+            }
+
+
+            var  calcParam  = function(){
+                var  index = (pageIndex - 1) * pageSize;
+                return {
+                    "index" : index,
+                    "size" : pageSize
+                }
+            }
+
+            firstList();
 
             //返回顶部
             $.scrollUp();
+
+//            var scrollTop = document.body.scrollTop;
+//            //自动滚动
+//           setInterval(function(){
+//               $('body').animate({scrollTop:scrollTop}, 800);
+//               scrollTop+=100
+//           },1800);
 
         }
 

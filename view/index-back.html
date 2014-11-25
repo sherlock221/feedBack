@@ -51,7 +51,7 @@
         <div class="col-sm-2  col-xs-3 text-left">
             <div class="row-fb row">
                 <span class="ib fb-text-noraml">今日</span>
-                <a href="javascript:void(0);" class="ib fb-btn dark">未知</a>
+                <a href="javascript:void(0);" class="ib fb-btn dark">380</a>
             </div>
         </div>
         <div class="col-sm-6 col-xs-5 text-right">
@@ -62,11 +62,11 @@
         </div>
         <div class="col-sm-4 col-xs-4 text-right">
             <section class="fb-list-btns hidden-xs">
-                <button class="btn btn-default  ib fb-default">本月(未知)</button>
-                <button class="btn btn-default  ib fb-default totalCount">累计(未知)</button>
+                <button class="btn btn-default  ib fb-default">本月(20)</button>
+                <button class="btn btn-default  ib fb-default">累计(300)</button>
             </section>
             <section class="visible-xs-block">
-                <a href="javascript:void(0);" class="ib totalCount" >累计(未知)</a>
+                <a href="javascript:void(0);" class="ib">累计(3000)</a>
             </section>
         </div>
     </section>
@@ -90,6 +90,7 @@
 
                 <div class="navigation" id="navigation">
                     <a href="/feedBack/data/getList_back.json?page=1"></a>
+                    <!--<a href="http://172.16.130.216:8088/v1/feedback/getFeedBackList?page=1"></a>-->
                 </div>
 
 
@@ -110,24 +111,18 @@
 
 <script type="text/html" id="listTempalte">
 
-    <@ for (i=0;i<feedbackList.length;i++) { @>
-
-    <li data-id="<@=feedbackList[i].feedbackId @>">
-        <time class="cbp_tmtime" datetime="<@=feedbackList[i].time  @> <@=feedbackList[i].time  @>">
-            <span><@=$ctDate(feedbackList[i].time)  @></span> <span><@=$cttime(feedbackList[i].time)  @></span>
+    <@ for (i=0;i<list.length;i++) { @>
+    <li>
+        <time class="cbp_tmtime" datetime="<@=list[i].fb_crtDate  @> <@=list[i].fb_crtTime  @>">
+            <span><@=list[i].fb_crtDate  @></span> <span><@=list[i].fb_crtTime  @></span>
 
         </time>
         <div class="cbp_tmicon ib light">
-            <@ if(!feedbackList[i].userImg) {@>
-                 <img src="../static/img/head.png"  width="42" height="42">
-            <@ }else{@>
-                 <img src="<@=feedbackList[i].userImg @>"  width="42" height="42">
-            <@ } @>
-
+            <img src="<@=list[i].fb_user_head @>"  width="42" height="42">
         </div>
 
 
-        <@ if(feedbackList[i].userType == '0') {@>
+        <@ if(list[i].fb_user_type == '0') {@>
             <div class="cbp_tmlabel  dark">
                 <div class="cbp_tmlabel_head dark clearfix">
         <@ }else{@>
@@ -137,58 +132,24 @@
 
                 <div class="pull-left">
                     <i class="ib cbp_user_img mr5"></i>
-                    <span class="ib mr5"><@=feedbackList[i].userName @>老师
-                        <@ if(feedbackList[i].userType == '0') {@>
+                    <span class="ib mr5"><@=list[i].fb_user @>老师
+                        <@ if(list[i].fb_user_type == '0') {@>
                             家长
                         <@ }else{@>
                             老师
                         <@ } @>
                    </span>
-
-
-                    <@ if(!feedbackList[i].userSubject) {@>
-                    <span class="ib">暂无科目</span>
-                    <@ }else{@>
-                    <span class="ib"><@=feedbackList[i].userSubject @></span>
-                    <@ } @>
-
-
-
+                    <span class="ib"><@=list[i].fb_user_subject @></span>
                 </div>
                 <div class="pull-right">
                     <i class="ib cbp_location_img mr5"></i>
-                    <@ if(!feedbackList[i].userClass) {@>
-                           <span class="ib">暂无班级</span>
-                    <@ }else{@>
-                           <span class="ib"><@=feedbackList[i].userClass @></span>
-                    <@ } @>
-
-
-
-                    <@ if(!feedbackList[i].userSchool) {@>
-                    <span class="ib">暂无学校</span>
-                    <@ }else{@>
-                    <span class="ib"><@=feedbackList[i].userSchool @></span>
-                    <@ } @>
-
-
-                        <@ if(!feedbackList[i].userCity) {@>
-                        <span class="ib">暂无城市</span>
-                        <@ }else{@>
-                        <span class="ib"><@=feedbackList[i].userCity @></span>
-                        <@ } @>
-
-                    <@ if(!feedbackList[i].userProvince) {@>
-                    <span class="ib">暂无省份</span>
-                    <@ }else{@>
-                    <span class="ib"><@=feedbackList[i].userProvince @></span>
-                    <@ } @>
-
-
-
+                    <span class="ib"><@=list[i].fb_class @></span>
+                    <span class="ib"><@=list[i].fb_school @></span>
+                    <span class="ib"><@=list[i].fb_location_city @></span>
+                    <span class="ib"><@=list[i].fb_location_province @></span>
                 </div>
             </div>
-            <p><@=feedbackList[i].content @></p>
+            <p><@=list[i].fb_desc @></p>
         </div>
     </li>
 
