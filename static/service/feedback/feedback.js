@@ -18,7 +18,8 @@ define(function (require, exports, module) {
     var UI = {
         inflineScroll: $(".timeline"),
         listTemplate: $("#listTempalte"),
-        totalCount   : $(".totalCount")
+        totalCount   : $(".totalCount"),
+        alertDom     : $("#alertDom")
     }
 
 
@@ -87,7 +88,6 @@ define(function (require, exports, module) {
             }
 
 
-
             var   infinitescroll = function(totalPage){
                 //无限滚动加载
                 $(".cbp_tmtimeline").infinitescroll({
@@ -137,12 +137,9 @@ define(function (require, exports, module) {
             }
 
 
-
-            var firstList = function () {
+            var firstList = function (callBack) {
                 var url = $("#navigation a").attr("href");
-
                  var  param = calcParam();
-
                 $.get(url, param, function (result) {
                     var data  = result.bizData;
 
@@ -156,7 +153,6 @@ define(function (require, exports, module) {
 
                         isFirst = false;
                     }
-
 
                     var html = refreshList(data);
                     UI.inflineScroll.find(".cbp_tmtimeline").html(html);
@@ -197,6 +193,29 @@ define(function (require, exports, module) {
 //               scrollTop+=100
 //           },1800);
 
+
+            var scrollurl = $("#navigation a").attr("href");
+            var  timeNewDate = 1000 * 60 * 5;
+
+
+            var  hasNewDate = function(){
+                $.get(scrollurl, {index :0,size : pageSize}, function (result) {
+                    var data  = result.bizData;
+                    var currentTime = new Date().getTime();
+                    var  dataTime = data.feedbackList[0].time;
+                    if(dataTime > currentTime){
+                        UI.alertDom.css("opacity","1");
+                    }
+                    else{
+                        UI.alertDom.css("opacity","0");
+                    }
+                });
+            }
+
+            setInterval(hasNewDate,timeNewDate);
+
+            //首发
+            hasNewDate();
         }
 
     };
